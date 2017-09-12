@@ -57,9 +57,9 @@ class ReturnTableHtml {
     private function getTable($htmlContent, $tableId) {
         if (NULL != $htmlContent) {
             // Remove newlines, returns, and breaks
-            $htmlContent = str_replace(array("\n", "\r", "\t"), '', $htmlContent);
-            $htmlContent = str_ireplace("\0D", '', $htmlContent);
-            $htmlContent = str_replace("  ", ' ', $htmlContent);
+            $htmlContent1 = str_replace(array("\n", "\r", "\t"), '', $htmlContent);
+            $htmlContent2 = str_ireplace("\0D", '', $htmlContent1);
+            //$htmlContent = str_replace("  ", ' ', $htmlContent);
             
             // Pull table out of HTML
             if (strcmp('', $tableId)) {
@@ -67,11 +67,11 @@ class ReturnTableHtml {
             } else {
                 $table_str = '<table id="' . $tableId;
             }
-            $start_pos = stripos($htmlContent, $table_str);
+            $start_pos = stripos($htmlContent2, $table_str);
             echo "vi tri bat dau bang = ".$start_pos;
-            $end_pos = stripos($htmlContent, '</table>', $start_pos) + strlen('</table>');
+            $end_pos = stripos($htmlContent2, '</table>', $start_pos) + strlen('</table>');
             $length = $end_pos - $start_pos;
-            $table = substr($htmlContent, $start_pos, $length);
+            $table = substr($htmlContent2, $start_pos, $length);
             return $table;
         } else {
             return;
