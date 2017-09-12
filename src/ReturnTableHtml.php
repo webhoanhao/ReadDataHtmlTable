@@ -8,6 +8,8 @@
 
 namespace WebHoanHao\ReadDataHtmlTable;
 
+use phpDocumentor\Reflection\Types\This;
+
 /**
  * Description of ReturnTableHtml
  *
@@ -20,7 +22,7 @@ class ReturnTableHtml {
     function __construct() {
 
     }
-    public static function withUrl($htmlUrl, $tableId) {
+    public function withUrl($htmlUrl, $tableId) {
         if (NULL != $htmlUrl) {
             // Get html using curl
             $c = curl_init($htmlUrl);
@@ -39,7 +41,7 @@ class ReturnTableHtml {
             }
             curl_close($c);
             if ($kq) {
-                $tableHtml = getTable($html,$tableId);
+                $tableHtml = $this->getTable($html,$tableId);
                 return $tableHtml;
             } else {
                 return;
@@ -48,11 +50,11 @@ class ReturnTableHtml {
             return;
         }
     }
-    public static function withFilename($htmlFilename, $tableId) {
+    public function withFilename($htmlFilename, $tableId) {
         
         return $htmlFilename;
     }
-    public function getTable($htmlContent, $tableId) {
+    private function getTable($htmlContent, $tableId) {
         if (NULL != $htmlContent) {
             // Remove newlines, returns, and breaks
             $htmlContent = str_replace(array("\n", "\r", "\t"), '', $htmlContent);
