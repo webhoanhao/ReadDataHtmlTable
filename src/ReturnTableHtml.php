@@ -8,8 +8,6 @@
 
 namespace WebHoanHao\ReadDataHtmlTable;
 
-use phpDocumentor\Reflection\Types\This;
-
 /**
  * Description of ReturnTableHtml
  *
@@ -62,13 +60,14 @@ class ReturnTableHtml {
             $htmlContent3 = str_replace("  ", ' ', $htmlContent2);
             
             // Pull table out of HTML
-            if (strcmp('', $tableId)) {
-                $table_str = '<table';
-            } else {
+            //if (strcmp('', $tableId)) {
+            if (NULL != $tableId) {
                 $table_str = '<table id="' . $tableId;
+            } else {
+                $table_str = '<table';
             }
             $start_pos = stripos($htmlContent3, $table_str);
-            echo "table string = ".$table_str;
+            echo "table string = \\".$table_str;
             echo "vi tri bat dau bang = ".$start_pos;
             $end_pos = stripos($htmlContent3, '</table>', $start_pos) + strlen('</table>');
             $length = $end_pos - $start_pos;
