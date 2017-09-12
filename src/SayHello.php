@@ -17,4 +17,7 @@ class SayHello {
     public static function world() {
         return 'Hello World, Read Data Html Table!';
     }
+    public static function human() {
+        return 'Hello Human, I\'m from UFO!';
+    }
 }
