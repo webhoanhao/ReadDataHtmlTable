@@ -59,7 +59,7 @@ class ReturnTableHtml {
             // Remove newlines, returns, and breaks
             $htmlContent1 = str_replace(array("\n", "\r", "\t"), '', $htmlContent);
             $htmlContent2 = str_ireplace("\0D", '', $htmlContent1);
-            //$htmlContent = str_replace("  ", ' ', $htmlContent);
+            $htmlContent3 = str_replace("  ", ' ', $htmlContent2);
             
             // Pull table out of HTML
             if (strcmp('', $tableId)) {
@@ -67,11 +67,12 @@ class ReturnTableHtml {
             } else {
                 $table_str = '<table id="' . $tableId;
             }
-            $start_pos = stripos($htmlContent2, $table_str);
+            $start_pos = stripos($htmlContent3, $table_str);
+            echo "table string = ".$table_str;
             echo "vi tri bat dau bang = ".$start_pos;
-            $end_pos = stripos($htmlContent2, '</table>', $start_pos) + strlen('</table>');
+            $end_pos = stripos($htmlContent3, '</table>', $start_pos) + strlen('</table>');
             $length = $end_pos - $start_pos;
-            $table = substr($htmlContent2, $start_pos, $length);
+            $table = substr($htmlContent3, $start_pos, $length);
             return $table;
         } else {
             return;
