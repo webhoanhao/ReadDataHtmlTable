@@ -52,7 +52,7 @@ class ReturnTableHtml {
         
         return $htmlFilename;
     }
-    private static function getTable($htmlContent, $tableId) {
+    public function getTable($htmlContent, $tableId) {
         if (NULL != $htmlContent) {
             // Remove newlines, returns, and breaks
             $htmlContent = str_replace(array("\n", "\r", "\t"), '', $htmlContent);
