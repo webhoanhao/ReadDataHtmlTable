@@ -1,4 +1,11 @@
-/vendor/
-/nbproject/private/
-/tests/
-/.idea/
+# Ignore everything
+*
+# ...even if they are in subdirectories
+*/
+# But not these files...
+!.gitignore
+!composer.json
+!composer.lock
+!README.md
+!src/
+# etc...
