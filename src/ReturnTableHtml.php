@@ -38,6 +38,14 @@ class ReturnTableHtml {
             return null;
         }
     }
+    public function withContents($contents, $tableId) {
+			if (null != $contents && '' != $contents) {
+				$tableHtml = $this->getTable($contents,$tableId);
+				return $tableHtml;
+			} else {
+				return null;
+			}
+    }
     public function withFilename($htmlFilename, $tableId) {
         if (null != $htmlFilename && '' != $htmlFilename) {
             $handle = fopen($htmlFilename, "r");

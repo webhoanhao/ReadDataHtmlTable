@@ -39,6 +39,15 @@ class ReadTableHtml {
         $objTableArray = $this->IgnoreColsArrayObject($resultIgnoredTableArray,$this->ignoreCols);
         return $objTableArray;
     }
+    public function withContents ($contents, $tableID = null) {
+        $htmlCodeObj = new ReturnTableHtml();
+        $tableHtml = $htmlCodeObj->withContents($contents,$tableID);
+        $tableArrayTR = $this->Table2ArrayTR($tableHtml);
+        $arrayTableObj = $this->ArrayTR2ObjectArray($tableArrayTR);
+        $resultIgnoredTableArray = $this->IgnoreRowsArrayObject($arrayTableObj,$this->ignoreRows);
+        $objTableArray = $this->IgnoreColsArrayObject($resultIgnoredTableArray,$this->ignoreCols);
+        return $objTableArray;
+    }
     private function IgnoreRowsArrayObject($arrayTableObj,$arrayIgnoreRows){
         $tempTableObjArray = array();
         if (count($arrayIgnoreRows) > 0) {
